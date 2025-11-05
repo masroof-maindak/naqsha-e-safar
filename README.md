@@ -11,6 +11,12 @@ uv sync
 
 # 2.  Download and prepare WorldPop population density data
 uv run scripts/01-download_worldpop.py
+
+# 3. Run the './scripts/02-osmnx-preprocessing.ipynb` Jupyter Notebook
+# Select the `.venv` interpreter and click 'Run All' inside the Notebook
+uv run --with jupyter jupyter lab
+# Or (w/ VS Code)
+code .
 ```
 
 ## TODOs
@@ -18,7 +24,7 @@ uv run scripts/01-download_worldpop.py
 - [ ] Data Downloading/Aggregation
   - [x] Population density - Worldpop
     - [ ] Isolate Lahore's data
-  - [ ] Lahore's PoIs and boundaries via osmnx
+  - [x] Lahore's PoIs
   - [ ] Lahore's public transport routes via CityLines
 - [ ] Graph representation
   - [ ] ???

@@ -3,10 +3,12 @@ name: Ruff
 on:
   pull_request:
     paths:
-      - "**/*.md"
+      - "**/*.py"
+      - "**/*.ipynb"
   push:
     paths:
       - "**/*.md"
+      - "**/*.ipynb"
 
 jobs:
   build:
@@ -23,6 +25,6 @@ jobs:
           pip install ruff
       - name: Run Ruff
         run: ruff check --output-format=github .
-      
+
       - name: Run Ruff Format Check
-        run: uv run ruff format --check .
+        run: run ruff format --check .

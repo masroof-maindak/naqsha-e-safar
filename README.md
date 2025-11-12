@@ -18,13 +18,10 @@ transit accessibility gaps to guide future transport planning.
 # Install dependencies and synchronize environment
 uv sync
 
-# 2. Download and prepare WorldPop population density data
-uv run scripts/01-download-worldpop.py
-
-# 3. Set up kernel
+# 2. Set up kernel
 uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=naqsha-e-safar
 
-# 4. Run the './scripts/02-osmnx-preprocessing.ipynb` Jupyter Notebook
+# 3. Run the './src/preprocessing.ipynb` Jupyter Notebook
 # Select the `.venv` interpreter and click 'Run All' inside the Notebook
 uv run --with jupyter jupyter lab
 # Or (w/ VS Code)
@@ -50,6 +47,7 @@ code .
       internet
 - [ ] Get as many randomly distributed bus stops as possible by manually
       checking Google Maps
+  - Search for 'bus station' 'bus stop', 'bus terminal', 'metro station'
 
 ## Acknowledgements
 

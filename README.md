@@ -41,7 +41,7 @@ code .
 
 - [x] Identify all the latitude-longitude sets that lie within Lahore's
       boundaries
-- [ ] Get the coordinates for the orange line & metro's stops from the CityLines
+- [x] Get the coordinates for the orange line & metro's stops from the CityLines
       API
 - [ ] Get as many Speedo stops as possible from miscellaneous data on the
       internet
@@ -53,3 +53,4 @@ code .
 
 - [WorldPop (Population Density Data)](https://hub.worldpop.org/geodata/summary?id=48110)
 - [OpenStreetMap](https://www.openstreetmap.org/)
+- [CityLines](https://www.citylines.co/lahore)

@@ -19,7 +19,7 @@ transit accessibility gaps to guide future transport planning.
 uv sync
 
 # 2. Download and prepare WorldPop population density data
-uv run scripts/01-download_worldpop.py
+uv run scripts/01-download-worldpop.py
 
 # 3. Set up kernel
 uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=naqsha-e-safar
@@ -42,7 +42,7 @@ code .
 
 ---
 
-- [ ] Identify all the latitude-longitude sets that lie within Lahore's
+- [x] Identify all the latitude-longitude sets that lie within Lahore's
       boundaries
 - [ ] Get the coordinates for the orange line & metro's stops from the CityLines
       API

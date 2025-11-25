@@ -11,7 +11,7 @@ import json
 import time
 import csv
 from pathlib import Path
-
+import os
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 
@@ -20,11 +20,10 @@ from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 # ---------------------------------------------------------------------
 THIS_FILE = Path(__file__).resolve()
 PROJECT_ROOT = THIS_FILE.parent.parent           
-DATA_DIR = PROJECT_ROOT / "data"
-DATA_DIR.mkdir(exist_ok=True)                    # create "data" if needed
+DATA_DIR = "../data/speedoData"
 
-GEOJSON_PATH = DATA_DIR / "speedo_sections.geojson"
-CSV_PATH = DATA_DIR / "speedo_routes_with_coords.csv"
+GEOJSON_PATH = os.path.join(DATA_DIR ,"speedo_sections.geojson")
+CSV_PATH = os.path.join(DATA_DIR , "speedo_routes_with_coords.csv")
 
 print(f"Project root: {PROJECT_ROOT}")
 print(f"Data dir:     {DATA_DIR}")

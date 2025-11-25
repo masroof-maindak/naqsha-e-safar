@@ -30,6 +30,12 @@ code .
 
 ## TODOs
 
+<details>
+
+<summary>Prior Weeks</summary>
+
+#### Week 1
+
 - [ ] ~~Data Downloading/Aggregation~~
   - [x] Population density - Worldpop
     - [ ] ~~Isolate Lahore's data~~
@@ -37,7 +43,7 @@ code .
   - [x] Lahore `osmnx` graph analysis
   - [ ] ~~Lahore's public transport routes via CityLines~~
 
----
+#### Week 2
 
 - [x] Identify all the latitude-longitude sets that lie within Lahore's
       boundaries
@@ -49,20 +55,23 @@ code .
       checking Google Maps~~
   - ~~Search for 'bus station' 'bus stop', 'bus terminal', 'metro station'~~
 
----
+#### Week 3
 
 - [x] See if Rehman's script (`speedodata` branch) can be developed further
 - [x] Copy over Speedo routes manually, in the same 'style' as how CityLines'
       `lahore_sections.geojson` is arrayed (dataset \#4)
 - [ ] ~~Build a list of points by cross-referencing PMA's PDF (dataset \#5)~~
 
----
+</details>
+
+#### Week 4
 
 - [ ] Build graph by aggregating numerous datasets (one-hot encoding)
-  - [ ] Convert route b/w two consecutive stops to edges (perhaps w/ a higher weight?)
-  - [ ] Quantize nodes to the population density of their nearest lat-long from amongst the population density dataset
+  - [ ] Convert route b/w two consecutive stops to edges (perhaps w/ a higher
+        weight?)
+  - [ ] Quantize nodes to the population density of their nearest lat-long from
+        amongst the population density dataset
 - [ ] Community density problem?
-
 
 ## Datasets
 

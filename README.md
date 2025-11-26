@@ -69,7 +69,7 @@ code .
 - [x] Build graph by aggregating numerous datasets
   - [x] Convert route b/w two consecutive stops to edges (perhaps w/ a higher
         weight?)
-  - [ ] Quantize nodes to the population density of their nearest lat-long from
+  - [x] Quantize nodes to the population density of their nearest lat-long from
         amongst the population density dataset
 - [ ] Community density problem?
 

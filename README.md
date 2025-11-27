@@ -22,6 +22,7 @@ uv sync
 uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=naqsha-e-safar
 
 # 3. Run the './src/preprocessing.ipynb' Jupyter Notebook
+
 # Select the `.venv` interpreter and click 'Run All' inside the Notebook
 uv run --with jupyter jupyter lab
 # Or (w/ VS Code)
@@ -62,8 +63,6 @@ code .
       `lahore_sections.geojson` is arrayed (dataset \#4)
 - [ ] ~~Build a list of points by cross-referencing PMA's PDF (dataset \#5)~~
 
-</details>
-
 #### Week 4
 
 - [x] Build graph by aggregating numerous datasets
@@ -71,7 +70,14 @@ code .
         weight?)
   - [x] Quantize nodes to the population density of their nearest lat-long from
         amongst the population density dataset
-- [ ] Community density problem?
+- [ ] [WIP] **Community density problem?**
+  - [x] Louvain
+
+</details>
+
+#### Week 5
+
+- [ ]
 
 ## Datasets
 

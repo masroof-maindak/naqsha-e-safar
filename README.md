@@ -77,7 +77,11 @@ code .
 
 #### Week 5
 
-- [ ]
+_Goal: find a neighbourhood w/ a high population density but poor public
+transport i.e a subgraph that is densely connected within some boundary (small
+diameter), has lots of people, and has very little public transport stops_
+
+- [ ] Map DBSCAN to graphs
 
 ## Datasets
 

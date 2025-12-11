@@ -81,7 +81,10 @@ _Goal: find a neighbourhood w/ a high population density but poor public
 transport i.e a subgraph that is densely connected within some boundary (small
 diameter), has lots of people, and has very little public transport stops_
 
-- [ ] Map DBSCAN to graphs
+- [ ] Rather than quantizing every node to its nearest population reading,
+      distribute every population reading's population value equally amongst all
+      nodes in its vicinity
+- [ ] Create node feature for 'distance_to_nearest_stop'
 
 ## Datasets
 

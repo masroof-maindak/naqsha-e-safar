@@ -84,7 +84,7 @@ diameter), has lots of people, and has very little public transport stops_
 - [x] Rather than quantizing every node to its nearest population reading,
       distribute every population reading's population value equally amongst all
       nodes in its vicinity
-- [ ] Create node feature for 'distance_to_nearest_stop'
+- [x] Create node feature for 'distance_to_nearest_stop'
 
 ## Datasets
 

@@ -73,8 +73,6 @@ code .
 - [ ] [WIP] **Community density problem?**
   - [x] Louvain
 
-</details>
-
 #### Week 5
 
 _Goal: find a neighbourhood w/ a high population density but poor public
@@ -84,7 +82,36 @@ diameter), has lots of people, and has very little public transport stops_
 - [x] Rather than quantizing every node to its nearest population reading,
       distribute every population reading's population value equally amongst all
       nodes in its vicinity
-- [x] Create node feature for 'distance_to_nearest_stop'
+- [x] Create a new node feature for 'distance_to_nearest_stop'
+
+</details>
+
+#### Week 6
+
+_At this point, we have two potential future approaches. Although I'm personally
+leaning towards #1, we'll be proceeding w/ #2 as per the instructor's advice,
+and more importantly: time constraints._
+
+***Graph Classification***
+
+1. [ ] Convert all existing communities (generated via Louvain) to their own
+       separate graphs
+2. [ ] Take a few really obvious picks (for served & underserved communities
+       (now graphs)) and mark them as such.
+3. [ ] Train a GNN
+4. [ ] Run it on the remaining communities
+
+***Node Classification***
+
+1. [x] Create a new 'distance_to_nearest_transit_stop' feature for every Point
+       of Interest
+2. [ ] Add community label (from Louvain) via one-hot encoding as a node feature
+3. [ ] Mark a few really obvious nodes as 'not-in-a-transit-desert' (e.g those
+       in a 500m radius of a transit stop)
+4. [ ] Train a GNN
+5. [ ] Run it on all other nodes
+6. [ ] Sort communitites based on the ratio of their nodes that have the
+       'not-in-a-transit-desert' feature set to high
 
 ## Datasets
 

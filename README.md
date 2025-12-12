@@ -118,12 +118,12 @@ and more importantly: time constraints._
 
 ## Assumptions/Caveats/Limitations
 
-- Few stops; we only have the Red Metro, Orange Line, and a handful of Speedo
-  stops
+- Few stops; we only have the Red Metro, Orange Line, and 20 unique Speedo stops
 - The 'communities' returned by Louvain are not representative of actual
   residential 'societies' in Lahore
 - We don't account for 'self-sufficient' methods of transport e.g communities w/
   a teeming qingqi culture
+- Some missing data e.g stops along Speedo routes (we ignore these)
 
 ## Datasets
 

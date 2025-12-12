@@ -27,6 +27,8 @@ uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=naqsh
 uv run --with jupyter jupyter lab
 # Or (w/ VS Code)
 code .
+
+# 4. Run the '.src/community-detection.ipynb' Jupyter Notebook
 ```
 
 ## TODOs
@@ -92,7 +94,9 @@ _At this point, we have two potential future approaches. Although I'm personally
 leaning towards #1, we'll be proceeding w/ #2 as per the instructor's advice,
 and more importantly: time constraints._
 
-***Graph Classification***
+<details>
+
+<summary><b><i>1. Graph Classification</i></b></summary>
 
 1. [ ] Convert all existing communities (generated via Louvain) to their own
        separate graphs
@@ -101,13 +105,17 @@ and more importantly: time constraints._
 3. [ ] Train a GNN
 4. [ ] Run it on the remaining communities
 
-***Node Classification***
+</details>
+
+**_2. Node Classification_**
 
 1. [x] Create a new 'distance_to_nearest_transit_stop' feature for every Point
        of Interest
 2. [x] Add community label (from Louvain) via one-hot encoding as a node feature
 3. [ ] Mark a few really obvious nodes as 'not-in-a-transit-desert' (e.g those
-       in a 500m radius of a transit stop)
+       in a 500m radius of a transit stop) ;; CHECK: can we do this w/ Networkx
+       or do we need to go back to osmnx land? Answer: **Probably**, because the
+       UTM CRS _does_ let us compute direct Euclidean distances.
 4. [ ] Train a GNN
 5. [ ] Run it on all other nodes
 6. [ ] Sort communitites based on the ratio of their nodes that have the

@@ -25,6 +25,9 @@ WORLDPOP_DATA_DIR = "../data/worldpop"
 
 OSMNX_DATA_DIR = "../data/osmnx"
 
+SPEEDO_DATA_DIR = "../data/speedo"
+SPEEDO_ROUTES_FPATH = os.path.join(SPEEDO_DATA_DIR, "speedo_routes_hand_cleaned.csv")
+
 CITYLINES_DATA_DIR = "../data/citylines"
 METRO_ROUTES_FPATH = os.path.join(CITYLINES_DATA_DIR, "lahore_sections.geojson")
 

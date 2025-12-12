@@ -1,0 +1,85 @@
+route_id,route_name,from,to,stop_index,stop_name,longitude,latitude
+1_1,Route 1,Railway Station,Bhatti Chowk,1,Railway Station,74.33560046162094,31.57541491964004
+1_2,Route 1,Railway Station,Bhatti Chowk,3,Nawaz Sharif Hospital,74.32714822943394,31.58589557092073
+1_3,Route 1,Railway Station,Bhatti Chowk,4,Kashmiri Gate,74.32115706491254,31.58791366145399
+1_4,Route 1,Railway Station,Bhatti Chowk,5,Lari Adda,74.3147425671796,31.59593924320426
+1_5,Route 1,Railway Station,Bhatti Chowk,6,Azadi Chowk,74.30684840040004,31.59178826918555
+1_6,Route 1,Railway Station,Bhatti Chowk,7,Texali Chowk,74.30675187895048,31.585437886504778
+1_7,Route 1,Railway Station,Bhatti Chowk,8,Bhatti Chowk,74.3067373924447,31.58248254337488
+2_1,Route 2,Samanabad Mor,Bhatti Chowk,1,Samanabad Morr,74.29462241375154,31.54438115150938
+2_2,Route 2,Samanabad Mor,Bhatti Chowk,3,Taj Company,74.2851825231262,31.572872344552138
+2_3,Route 2,Samanabad Mor,Bhatti Chowk,4,Sanda,74.2884450,31.5582420
+2_4,Route 2,Samanabad Mor,Bhatti Chowk,6,Moon Market,74.28133067511531,31.552265247957262
+2_5,Route 2,Samanabad Mor,Bhatti Chowk,8,Bhatti Chowk,74.3067373924447,31.58248254337488
+3_1,Route 3,Railway Station,Shahdara Lari Adda,1,Railway Station,74.33560046162094,31.57541491964004
+3_2,Route 3,Railway Station,Shahdara Lari Adda,3,Nawaz Sharif Hospital,74.32714822943394,31.58589557092073
+3_3,Route 3,Railway Station,Shahdara Lari Adda,4,Kashmiri Gate,74.32115706491254,31.58791366145399
+3_4,Route 3,Railway Station,Shahdara Lari Adda,5,Lari Adda,74.3147425671796,31.59593924320426
+3_5,Route 3,Railway Station,Shahdara Lari Adda,6,Azadi Chowk,74.30684840040004,31.59178826918555
+3_6,Route 3,Railway Station,Shahdara Lari Adda,7,Timber Market,74.30184024249866,31.594707982379536
+3_7,Route 3,Railway Station,Shahdara Lari Adda,8,METRO,74.29975884846834,31.597294158298887
+3_8,Route 3,Railway Station,Shahdara Lari Adda,9,Niazi Chowk,74.29921858138576,31.601181628062587
+3_9,Route 3,Railway Station,Shahdara Lari Adda,10,Shahdara Metro Station,74.29045315734434,31.616486108621153
+3_10,Route 3,Railway Station,Shahdara Lari Adda,11,Shahdara Lari Adda,74.28989437724145,31.619579042092585
+4_1,Route 4,R.A Bazar,Chungi Amar Sidhu,1,R.A Bazar,74.3846533874385,31.506364711287898
+4_2,Route 4,R.A Bazar,Chungi Amar Sidhu,2,Nadeem Chowk,74.37949282696981,31.506501882221478
+4_3,Route 4,R.A Bazar,Chungi Amar Sidhu,3,Defence Morr,74.37471849497268,31.4948201776437
+4_4,Route 4,R.A Bazar,Chungi Amar Sidhu,4,Shareef Market,74.3694291787579,31.490136108575694
+4_5,Route 4,R.A Bazar,Chungi Amar Sidhu,5,Walton,74.36522372426212,31.48583354776013
+4_6,Route 4,R.A Bazar,Chungi Amar Sidhu,6,Qainchi,74.3490327440033,31.46458030295554
+4_7,Route 4,R.A Bazar,Chungi Amar Sidhu,7,Ghazi Chowk,74.35106409285788,31.456352424392332
+4_8,Route 4,R.A Bazar,Chungi Amar Sidhu,8,Chungi Amar Sidhu,74.3532970,31.4505010
+5_1,Route 5,Shad Bagh Underpass,Bhatti Chowk,1,Shad Bagh Underpass,74.33615238030514,31.607858539380135
+5_2,Route 5,Shad Bagh Underpass,Bhatti Chowk,2,Rajput Park,74.33376060672346,31.603138353073536
+5_3,Route 5,Shad Bagh Underpass,Bhatti Chowk,3,Madina Chowk,74.32776594309637,31.600663339661025
+5_4,Route 5,Shad Bagh Underpass,Bhatti Chowk,4,Lohay Wali Pulley,74.31872736838565,31.60350227796127
+5_5,Route 5,Shad Bagh Underpass,Bhatti Chowk,5,Badami Bagh,74.31404344799128,31.597756120970264
+5_6,Route 5,Shad Bagh Underpass,Bhatti Chowk,6,Lari Adda Gol Chakar,74.31476227995022,31.59578223619235
+5_7,Route 5,Shad Bagh Underpass,Bhatti Chowk,7,Azadi Chowk,74.30684840040004,31.59178826918555
+5_8,Route 5,Shad Bagh Underpass,Bhatti Chowk,8,Taxali Chowk,74.30675187895048,31.585437886504778
+5_9,Route 5,Shad Bagh Underpass,Bhatti Chowk,9,Bhatti Chowk,74.3067373924447,31.58248254337488
+6_1,Route 6,Babu Sabu,Raj Garh Chowk,1,Babu Sabu,74.26643195977654,31.538543784127576
+6_2,Route 6,Babu Sabu,Raj Garh Chowk,2,Niazi Adda,74.27342798129189,31.536680696221406
+6_3,Route 6,Babu Sabu,Raj Garh Chowk,3,City Bus Stand,74.28242402086191,31.533734464723345
+6_4,Route 6,Babu Sabu,Raj Garh Chowk,4,Chowk Yateem Khana,74.28586797696363,31.53244507649773
+6_5,Route 6,Babu Sabu,Raj Garh Chowk,5,Bhala Stop,74.2927340616633,31.53980637268337
+6_6,Route 6,Babu Sabu,Raj Garh Chowk,6,Samanabad Morr,74.2946410,31.5443050
+6_7,Route 6,Babu Sabu,Raj Garh Chowk,7,Chauburji,74.30473247156368,31.553192424160095
+6_8,Route 6,Babu Sabu,Raj Garh Chowk,8,Riwaz Garden,74.30520578970122,31.559737671681876
+6_9,Route 6,Babu Sabu,Raj Garh Chowk,9,M.A.O College,74.30479684461332,31.562435163388106
+6_10,Route 6,Babu Sabu,Raj Garh Chowk,11,Raj Garh Chowk,74.29772238638675,31.56210038286019
+7_1,Route 7,Bagrian,Chungi Amar Sidhu,1,Bagrian,74.29982218929237,31.43275021062861
+7_2,Route 7,Bagrian,Chungi Amar Sidhu,2,Depot Chowk,74.31124023412829,31.431150054809475
+7_3,Route 7,Bagrian,Chungi Amar Sidhu,3,Minhaj University,74.31820970898572,31.443590134608886
+7_4,Route 7,Bagrian,Chungi Amar Sidhu,4,Hamdard Chowk,74.32034758473358,31.447323052502792
+7_5,Route 7,Bagrian,Chungi Amar Sidhu,5,Rehmat Eye Hospital,74.32452356866,31.454715493297083
+7_6,Route 7,Bagrian,Chungi Amar Sidhu,6,Pindi Stop,74.32733131212505,31.459250369703977
+7_7,Route 7,Bagrian,Chungi Amar Sidhu,7,Peco Morr,74.33538397699338,31.456344669982467
+7_8,Route 7,Bagrian,Chungi Amar Sidhu,8,Kot Lakhpat Railway Station,74.33715224822687,31.459262205674424
+7_9,Route 7,Bagrian,Chungi Amar Sidhu,9,Phatak Mandi,74.34026361043713,31.464231511982554
+7_10,Route 7,Bagrian,Chungi Amar Sidhu,10,Qainchi,74.3490327440033,31.46458030295554
+7_11,Route 7,Bagrian,Chungi Amar Sidhu,11,Ghazi Chowk,74.35106409285788,31.456352424392332
+7_12,Route 7,Bagrian,Chungi Amar Sidhu,12,Chungi Amar Sidhu,74.3532970,31.4505010
+8_1,Route 8,Doctor Hospital,Canal,1,Doctor Hospital,74.28108434031328,31.48111718257622
+8_2,Route 8,Doctor Hospital,Canal,2,Wafaqi Colony,74.2892382556632,31.484365263833762
+8_3,Route 8,Doctor Hospital,Canal,4,Hailey College,74.3074840,31.5617120
+8_4,Route 8,Doctor Hospital,Canal,6,Barkat Market,74.32080160578967,31.50097838097086
+8_5,Route 8,Doctor Hospital,Canal,7,Kalma Chowk,74.33029415394567,31.503837604280204
+8_6,Route 8,Doctor Hospital,Canal,8,Qaddafi Stadium,74.3282987486776,31.513951526722398
+8_7,Route 8,Doctor Hospital,Canal,9,Canal,74.3265417334084,31.519556186548332
+9_1,Route 9,Railway Station,Sham Nagar,1,Railway Station,74.33560046162094,31.57541491964004
+9_2,Route 9,Railway Station,Sham Nagar,2,Haji Camp,74.33522807050508,31.57050407843765
+9_3,Route 9,Railway Station,Sham Nagar,3,Shimla Pahari,74.33544111182171,31.564325059058753
+9_4,Route 9,Railway Station,Sham Nagar,4,Lahore Zoo,74.3271658458679,31.55815596132492
+9_5,Route 9,Railway Station,Sham Nagar,7,Qartaba Chowk,74.31550766969512,31.548523903135077
+9_6,Route 9,Railway Station,Sham Nagar,8,Chauburji,74.30473247156368,31.553192424160095
+9_7,Route 9,Railway Station,Sham Nagar,9,Sham Nagar,74.3041920,31.5541950
+10_1,Route 10,Multan Chungi,Qartaba Chowk,1,Multan Chungi,74.26479123650977,31.496230751199437
+10_2,Route 10,Multan Chungi,Qartaba Chowk,2,Mustafa Town,74.27460530356505,31.49922611382154
+10_3,Route 10,Multan Chungi,Qartaba Chowk,5,Bhekewal Morr,74.3009252824371,31.509780572724534
+10_4,Route 10,Multan Chungi,Qartaba Chowk,6,Wahdat Colony,74.3058915092517,31.51231577433336
+10_5,Route 10,Multan Chungi,Qartaba Chowk,7,Naqsha Stop,74.3152382136692,31.516850491293347
+10_6,Route 10,Multan Chungi,Qartaba Chowk,8,Canal,74.31522501707254,31.516912973542166
+10_7,Route 10,Multan Chungi,Qartaba Chowk,9,Ichra,74.32329723450691,31.520477985929002
+10_8,Route 10,Multan Chungi,Qartaba Chowk,10,Shama,74.31875339082761,31.539502851010777
+10_9,Route 10,Multan Chungi,Qartaba Chowk,11,Qartaba Chowk,74.31509782057223,31.548107280591786

@@ -122,6 +122,12 @@ and more importantly: time constraints._
 6. [ ] Sort communities based on the ratio of their nodes whose label set is
        high (i.e 'this node is not in a transit desert')
 
+## Assumptions/Caveats/Limitations
+
+- Few stops; we only have the Red Metro, Orange Line, and a handful of Speedo stops
+- The 'communities' returned by Louvain are not representative of actual residential 'societies' in Lahore
+- We don't account for 'self-sufficient' methods of transport e.g communities w/ a teeming qingqi culture
+
 ## Datasets
 
 1. [WorldPop (Population Density Data)](https://hub.worldpop.org/geodata/summary?id=48110)

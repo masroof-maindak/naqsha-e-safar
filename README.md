@@ -109,17 +109,16 @@ and more importantly: time constraints._
 
 **_2. Node Classification_**
 
-1. [x] Create a new 'distance_to_nearest_transit_stop' feature for every Point
-       of Interest
-2. [x] Add community label (from Louvain) via one-hot encoding as a node feature
-3. [ ] Mark a few really obvious nodes as 'not-in-a-transit-desert' (e.g those
-       in a 500m radius of a transit stop) ;; CHECK: can we do this w/ Networkx
-       or do we need to go back to osmnx land? Answer: **Probably**, because the
-       UTM CRS _does_ let us compute direct Euclidean distances.
-4. [ ] Train a GNN
-5. [ ] Run it on all other nodes
-6. [ ] Sort communitites based on the ratio of their nodes that have the
-       'not-in-a-transit-desert' feature set to high
+1. [x] Create a new 'distance_to_nearest_stop' feature for every Point of
+       Interest
+2. [x] Add community label (using Louvain) via one-hot encoding as a node
+       feature
+3. [ ] Generate binary labels based on `distance_to_nearest_stop < 500`; the
+       label denotes that these nodes are not in a transit desert
+4. [ ] Train a GNN on the graph + labels
+5. [ ] Run it on all other nodes & predict their label
+6. [ ] Sort communities based on the ratio of their nodes whose label set is
+       high (i.e 'this node is not in a transit desert')
 
 ## Datasets
 

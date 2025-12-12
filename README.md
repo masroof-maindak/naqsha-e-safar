@@ -113,8 +113,10 @@ and more importantly: time constraints._
        Interest
 2. [x] Add community label (using Louvain) via one-hot encoding as a node
        feature
-3. [ ] Generate binary labels based on `distance_to_nearest_stop < 500`; the
-       label denotes that these nodes are not in a transit desert
+3. [x] Generate binary labels based on `distance_to_nearest_stop < 600` &
+       `distance_to_nearest_stop > 3500`; these denote cases where we are
+       definitely not-inside and inside a transit desert, respectively; every
+       other node is used for testing
 4. [ ] Train a GNN on the graph + labels
 5. [ ] Run it on all other nodes & predict their label
 6. [ ] Sort communities based on the ratio of their nodes whose label set is

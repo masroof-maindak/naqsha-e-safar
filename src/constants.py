@@ -33,3 +33,8 @@ AGGR_GRAPH_PATH = "../data/graphs/aggregated.graphml"
 POP_READING_RADIUS = 1000
 
 COMMUNITY_PARTITIONS_FPATH = "../data/comm_partitions.pkl"
+
+DISTANCE_POSITIVE_THRESHOLD = 600
+DISTANCE_NEGATIVE_THRESHOLD = 3500
+
+FINAL_GRAPH_PATH = "../data/graphs/final.gpickle"

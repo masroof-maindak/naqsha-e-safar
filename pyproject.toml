@@ -5,13 +5,13 @@ description = "Graph-based analysis of public transit deserts in Lahore."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "community>=1.0.0b1",
     "contextily>=1.6.2",
     "geopandas>=1.1.1",
     "matplotlib>=3.10.7",
     "networkx>=3.5",
     "osmnx>=2.0.6",
     "pandas>=2.3.3",
+    "python-louvain>=0.16",
     "requests>=2.32.5",
 ]
 

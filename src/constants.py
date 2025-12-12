@@ -30,4 +30,4 @@ METRO_ROUTES_FPATH = os.path.join(CITYLINES_DATA_DIR, "lahore_sections.geojson")
 
 AGGR_GRAPH_PATH = "../data/aggregated.graphml"
 
-RADIUS = 1000
+COMMUNITY_PARTITIONS_FPATH = "../data/comm_partitions.pkl"

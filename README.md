@@ -105,7 +105,7 @@ and more importantly: time constraints._
 
 1. [x] Create a new 'distance_to_nearest_transit_stop' feature for every Point
        of Interest
-2. [ ] Add community label (from Louvain) via one-hot encoding as a node feature
+2. [x] Add community label (from Louvain) via one-hot encoding as a node feature
 3. [ ] Mark a few really obvious nodes as 'not-in-a-transit-desert' (e.g those
        in a 500m radius of a transit stop)
 4. [ ] Train a GNN

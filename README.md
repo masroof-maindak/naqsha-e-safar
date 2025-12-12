@@ -15,20 +15,14 @@ transit accessibility gaps to guide future transport planning.
 ## Setup
 
 ```bash
-# Install dependencies and synchronize environment
+# 1. Install dependencies and synchronize environment
 uv sync
 
-# 2. Set up kernel
-uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv --name=naqsha-e-safar
-
-# 3. Run the './src/preprocessing.ipynb' Jupyter Notebook
-
-# Select the `.venv` interpreter and click 'Run All' inside the Notebook
-uv run --with jupyter jupyter lab
-# Or (w/ VS Code)
+# 2. Run the './src/preprocessing.ipynb' Jupyter Notebook
+uv run --with jupyter jupyter lab # Or; w/ VS Code
 code .
 
-# 4. Run the '.src/community-detection.ipynb' Jupyter Notebook
+# 3. Run './src/community-detection.ipynb'
 ```
 
 ## TODOs
@@ -124,9 +118,12 @@ and more importantly: time constraints._
 
 ## Assumptions/Caveats/Limitations
 
-- Few stops; we only have the Red Metro, Orange Line, and a handful of Speedo stops
-- The 'communities' returned by Louvain are not representative of actual residential 'societies' in Lahore
-- We don't account for 'self-sufficient' methods of transport e.g communities w/ a teeming qingqi culture
+- Few stops; we only have the Red Metro, Orange Line, and a handful of Speedo
+  stops
+- The 'communities' returned by Louvain are not representative of actual
+  residential 'societies' in Lahore
+- We don't account for 'self-sufficient' methods of transport e.g communities w/
+  a teeming qingqi culture
 
 ## Datasets
 

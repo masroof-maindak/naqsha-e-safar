@@ -41,3 +41,8 @@ DISTANCE_POSITIVE_THRESHOLD = 1500
 DISTANCE_NEGATIVE_THRESHOLD = 4500
 
 FINAL_GRAPH_PATH = "../data/graphs/final.gpickle"
+
+FINAL_GRAPH_PATH_WITH_INFERENCE  = "../data/graphs/final_with_inference.gpickle"
+
+BEST_MODEL_PATH = "../data/ModelParameters/best_transit_gcn.pth"
+

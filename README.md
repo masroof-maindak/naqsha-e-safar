@@ -23,6 +23,11 @@ uv run --with jupyter jupyter lab # Or; w/ VS Code
 code .
 
 # 3. Run './src/community-detection.ipynb'
+
+# 4. Set up Torch via pip because Torch via the uv project interface is goofy
+uv pip install torch --torch-backend=auto
+
+# 5. Run './src/gnn.ipynb'
 ```
 
 ## TODOs
@@ -111,9 +116,9 @@ and more importantly: time constraints._
        `distance_to_nearest_stop > 3500`; these denote cases where we are
        definitely not-inside and inside a transit desert, respectively; every
        other node is used for testing
-4. [ ] Train a GNN on the graph + labels
-5. [ ] Run it on all other nodes & predict their label
-6. [ ] Sort communities based on the ratio of their nodes whose label set is
+4. [x] Train a GNN on the graph + labels
+5. [x] Run it on all other nodes & predict their label
+6. [x] Sort communities based on the ratio of their nodes whose label set is
        high (i.e 'this node is not in a transit desert')
 
 ## Assumptions/Caveats/Limitations

@@ -35,11 +35,11 @@
     align: left,
     stroke: none,
 
-    [Mujtaba Asim], link("mailto:BSCS22012@itu.edu.pk"),
-    [Muhammad Rehman], link("mailto:BSCS22018@itu.edu.pk"),
-    [Aleena Basit], link("mailto:BSCS22005@itu.edu.pk"),
-    [Abdullah Raffay], link("mailto:BSCS22085@itu.edu.pk"),
-    [Eman Afrooz], link("mailto:BSCS22099@itu.edu.pk"),
+    [Mujtaba Asim], link("mailto:bscs22012@itu.edu.pk"),
+    [Muhammad Rehman], link("mailto:bscs22018@itu.edu.pk"),
+    [Aleena Basit], link("mailto:bscs22005@itu.edu.pk"),
+    [Abdullah Raffay], link("mailto:bscs22085@itu.edu.pk"),
+    [Eman Afrooz], link("mailto:bscs22099@itu.edu.pk"),
   )
 
   #v(1em)

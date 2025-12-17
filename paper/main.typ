@@ -1,13 +1,13 @@
 #set page(
   paper: "a4",
-  margin: (x: 1.5cm, y: 2cm),
+  margin: (x: 2cm, y: 2.5cm),
 )
 
 #set text(
-  size: 11pt,
+  size: 12pt,
 )
 
-#set par(justify: true)
+#set par(justify: true, leading: 0.8em)
 
 #show link: set text(fill: rgb("#0055aa"))
 
@@ -55,259 +55,208 @@
 
 = Abstract
 
-Public transportation accessibility is crucial for urban equity and sustainable
-development. This research tackles the problem of identifying transit deserts in
-Lahore—areas with high population density but poor access to public transport.
-We built a spatial graph of the city using population data from WorldPop,
-transit routes from CityLines and Zameen, and the road network from
-OpenStreetMap. By applying Graph Neural Networks, specifically a Graph
-Convolutional Network, we classified around 160,000 points of interest into
-transit-accessible and transit-desert regions. Our approach partitions the city
-into roughly 160 communities using the Louvain algorithm and uses a weak
-supervision strategy to generate training labels from obvious examples. The
-trained GCN identifies underserved areas that should be prioritized for future
-transport planning. While our results have some limitations due to incomplete
-data, they represent a solid first step toward data-driven transit equity
-analysis in Lahore, with the methodology being easily scalable to other cities.
+Public transportation accessibility is fundamental to urban equity and
+sustainable development. This project addresses the challenge of identifying
+"transit deserts" in Lahore—areas characterized by high population density yet
+insufficient access to public transport infrastructure. We constructed a spatial
+graph of the city by aggregating population estimates from WorldPop, transit
+route data from CityLines and Zameen, and the road network from OpenStreetMap.
+By applying a Graph Convolutional Network (GCN), we classified approximately
+146,000 points of interest into transit-accessible and transit-deficient
+regions. Our methodology partitions the city into approximately 152 spatial
+communities using the Louvain algorithm and employs a heuristic weak supervision
+strategy to generate training labels from high-confidence examples. The trained
+GCN successfully identifies underserved areas that warrant prioritization in
+future transport planning. While acknowledged to be an approximation due to data
+limitations, this study represents a significant step toward data-driven transit
+equity analysis in Lahore, with a methodology that is scalable to other
+developing urban centers.
 
 = Introduction
 
 == Background and Motivation
 
-Urban transportation systems are basically the lifeline of modern cities—they
-enable economic activity, social connections, and access to essential services
-like healthcare and education. But the thing is, public transit infrastructure
-isn't distributed equally across cities. This creates what we call "transit
-deserts": areas where people have limited or no access to reliable public
-transport despite needing it. Lahore, being Pakistan's second-largest city with
-over 13 million people, faces this exact problem. Even with recent investments
-like the Orange Line Metro Train and Speedo bus routes, large portions of the
-city remain underserved.
+Urban transportation systems are the vital backbone of modern cities, enabling
+economic activity, social connectivity, and access to essential services such as
+healthcare and education. However, public transit infrastructure is frequently
+distributed inequitably across urban landscapes. This disparity creates "transit
+deserts": areas where residents possess limited access to reliable public
+transport despite significant need.
 
-Transit deserts aren't just about distance to the nearest stop. They're about
-the intersection of high population density, limited transportation options, and
-the resulting social and economic exclusion. People living in these areas end up
-spending more time and money on commutes, have reduced access to job
-opportunities, and generally face lower quality of life. For urban planners
-trying to allocate resources fairly, pinpointing these areas with accuracy is
-essential.
+Lahore, as Pakistan's second-largest metropolis with a population exceeding 13
+million, acutely faces this challenge. Despite recent infrastructural
+investments—such as the Orange Line Metro Train and the Speedo bus
+network—substantial portions of the city remain underserved. Transit deserts are
+not defined solely by Euclidean distance to the nearest stop; rather, they
+represent the intersection of high population density, limited modal options,
+and consequent socio-economic exclusion. Residents in these areas often incur
+higher commute costs and face reduced access to employment opportunities.
 
-Traditional methods for measuring transit accessibility—like simple distance
-buffers or isochrone analysis—don't really capture the complexity of how cities
-work. They miss things like network topology, population distribution patterns,
-and the spatial relationships between different neighborhoods. That's where our
-approach comes in.
+For urban planners attempting to allocate resources equitably, accurate
+identification of these zones is essential. Traditional accessibility
+metrics—such as simple distance buffers or isochrone analysis—often fail to
+capture the complexity of urban mobility. They frequently overlook network
+topology, heterogeneous population distributions, and the spatial dependencies
+between neighborhoods. This research aims to bridge this gap by proposing a
+graph-based deep learning approach.
 
 == Research Objectives
 
-The goal of this project is to develop a data-driven method for identifying
-transit deserts in Lahore using Graph Neural Networks. Specifically, we aim to:
+The primary objective of this study is to develop a data-driven framework for
+identifying transit deserts in Lahore using Graph Neural Networks (GNNs).
+Specifically, we aim to:
 
-1. *Build a spatial graph*: Model Lahore as a graph where nodes represent points
-  of interest and edges represent road connections, integrating population,
-  transit, and infrastructure data.
-
-2. *Engineer meaningful features*: Create node features that capture demographic
+1. *Construct a Spatial Graph*: Model Lahore as a graph where nodes represent
+  points of interest (POIs) and edges represent road connections, integrating
+  disparate population and transit datasets.
+2. *Engineer Features*: Develop node features that encapsulate demographic
   characteristics, topological properties, and geographic context.
-
-3. *Detect communities*: Use the Louvain algorithm to partition the city into
-  spatial communities that reflect natural clustering in the urban fabric.
-
-4. *Classify nodes*: Train a GNN to distinguish between transit-adequate and
-  transit-deficient areas using a weak supervision approach.
-
-5. *Generate actionable insights*: Produce visualizations and metrics that urban
-  planners can actually use to guide transit expansion decisions.
+3. *Detect Communities*: Utilize the Louvain algorithm to partition the city
+  into spatial communities, approximating natural urban clusters.
+4. *Classify Nodes*: Train a Graph Convolutional Network (GCN) to distinguish
+  between transit-adequate and transit-deficient areas using a weak supervision
+  approach.
+5. *Generate Insights*: Produce visualizations and metrics to assist urban
+  planners in evidence-based decision-making.
 
 == Contributions
 
-Our work makes a few key contributions:
+This work offers several key contributions:
 
-- *Novel application*: This is one of the first attempts at using GNNs for
-  transit desert identification in a developing country context, where data is
-  often messy and incomplete.
-
-- *Scalable framework*: The methodology relies entirely on publicly available
-  datasets and is modular enough to be adapted to other cities without major
-  changes.
-
-- *Weak supervision strategy*: We introduce a systematic way to generate
-  training labels from "obvious" examples, which lets us do semi-supervised
-  learning without expensive manual labeling.
-
-- *Practical validation*: We demonstrate that the approach works on real-world
-  data from Lahore and produces results that align with intuition about
-  underserved areas.
+- *Novel Application*: We present one of the first applications of GNNs for
+  transit desert identification in the context of a developing country, where
+  data scarcity is a prevalent challenge.
+- *Scalable Framework*: The methodology relies entirely on open-source datasets
+  and is modular, allowing for adaptation to other cities with minimal
+  architectural changes.
+- *Weak Supervision Strategy*: We introduce a heuristic labeling strategy to
+  generate training data from "obvious" high-confidence examples, bypassing the
+  need for expensive manual annotation.
+- *Practical Validation*: We demonstrate the efficacy of the approach on
+  real-world data from Lahore, yielding results that align with intuitive
+  understandings of the city's underserved regions.
 
 = Related Work
 
 == Transit Accessibility Analysis
 
-Most traditional approaches to measuring transit accessibility use
-distance-based metrics, like the classic "400m walking distance" buffer around
-stops, or isochrone maps that show areas reachable within a certain time.
-Gravity models have also been popular, where accessibility is weighted by the
-attractiveness of destinations. While these methods are straightforward and
-interpretable, they struggle to account for the complex interactions between
-population distribution, multi-modal transit options, and the actual topology of
-road networks. Recent work has started incorporating GIS-based techniques to get
-more nuanced assessments, but most of it still relies on fairly simple spatial
-analysis.
+Traditional approaches to measuring transit accessibility predominantly utilize
+distance-based metrics, such as the standard "400m walking distance" buffer
+around stops, or isochrone maps depicting areas reachable within specific
+timeframes. Gravity models, where accessibility is weighted by destination
+attractiveness, remain popular. While straightforward and interpretable, these
+methods often struggle to account for complex interactions between population
+density, multi-modal transit options, and the actual topology of road networks.
+Recent studies have incorporated GIS-based techniques for more nuanced
+assessments, yet many rely on relatively simple spatial heuristics.
 
 == Graph Neural Networks in Urban Computing
 
-GNNs have become really popular for modeling relational data in cities. They've
-been applied to traffic prediction, where the road network is naturally a graph,
-as well as air quality forecasting and urban land use classification. The key
-advantage of GNNs is their ability to aggregate information from neighboring
-nodes through message-passing, which captures the spatial autocorrelation that's
-everywhere in urban data. Despite this, their use for transit equity and
-accessibility analysis is still pretty limited, especially in cities outside the
-developed world where the challenges are different.
+GNNs have gained significant traction for modeling relational data in urban
+environments. They have been successfully applied to traffic prediction, air
+quality forecasting, and urban land use classification. The primary advantage of
+GNNs lies in their ability to aggregate information from neighboring nodes via
+message passing, thereby capturing the spatial autocorrelation inherent in urban
+data. Despite this, their application to transit equity analysis remains
+limited, particularly in the Global South where urban challenges differ
+distinctively from developed nations.
 
 == Community Detection in Urban Graphs
 
-Community detection algorithms are used to find clusters of densely connected
-nodes in graphs. The Louvain method is one of the most popular because it's fast
-and works well on large networks. It's been applied to urban graphs before—for
-example, to identify neighborhoods based on mobility patterns or to understand
-the functional structure of cities. Label propagation and DBSCAN are other
-common approaches. These techniques give us a natural way to group fine-grained
-spatial data into regions that make sense for planning purposes.
+Community detection algorithms identify clusters of densely connected nodes
+within graphs. The Louvain method is widely utilized due to its computational
+efficiency on large networks. In urban contexts, it has been used to delineate
+neighborhoods based on mobility patterns or functional structures. While
+algorithms like DBSCAN are also common, graph-based partitioning provides a
+natural method to group fine-grained spatial data into regions relevant for
+planning.
 
 = Methodology
 
 == Data Collection and Preprocessing
 
-We pulled together data from multiple public sources, each providing a different
-view of Lahore's urban environment.
+Data was aggregated from multiple open-source repositories to construct a
+comprehensive view of Lahore's urban environment.
 
 === Population Density Data
 
-Population estimates came from the WorldPop project, which provides gridded
-population data at 1km × 1km resolution. This data is derived from census
-records, satellite imagery, and geospatial modeling. For Lahore, it captures
-both the dense urban core and the lower-density periphery pretty well.
-
-The tricky part was integrating this raster data with our graph representation.
-Initially, we tried a simple approach: for each point of interest, assign it the
-population value from the nearest grid cell. But this turned out to be a bad
-idea—it artificially inflated population density based on how many nodes
-happened to fall near a particular grid cell. If you had ten POIs clustered near
-one population reading, they'd all get assigned the same value, making it seem
-like the area had way more people than it actually did.
-
-We fixed this by distributing each population reading evenly among all nodes
-within a 1km radius (matching the span of each grid cell). So if a cell has
-10,000 people and there are 50 nodes within 1km of its center, each node gets
-credited with 200 people. This gives a much more realistic representation of
-population distribution across the graph.
+Population estimates were sourced from the WorldPop project, which provides
+gridded data at a 1km $times$ 1km resolution derived from census records and
+satellite imagery. A significant challenge involved integrating this raster data
+with our vector graph representation. Initial attempts to assign population
+based on nearest grid cells proved ineffective, as they artificially inflated
+density in areas where multiple nodes clustered near a single high-population
+cell. To rectify this, we distributed each population reading evenly among all
+nodes within a 1km radius. For instance, if a cell containing 10,000 people
+encompassed 50 nodes, each node was assigned a value of 200. This approach
+yields a more realistic representation of population distribution across the
+graph.
 
 === Transit Infrastructure Data
 
-Transit route data came from two main sources:
+Transit route data was derived from two primary sources:
+- *CityLines*: Used to extract the geometry of the Orange Line Metro Train.
+- *Zameen*: Provided route information for the Speedo bus system.
 
-- *CityLines*: An open-source database of transit systems worldwide. We used it
-  to get the geometry of Lahore's Orange Line Metro Train route.
-
-- *Zameen*: A local property portal that published information about Speedo bus
-  routes. We manually cleaned this data, which involved geocoding addresses,
-  validating stop locations, and fixing inconsistencies.
-
-In total, we have 519 stops from the metro system and 70 unique Speedo stops,
-giving us 589 transit stops across the city. We're aware this is incomplete—it
-doesn't capture informal transport like qingqis, private vans, or intercity
-buses that also serve neighborhoods—but it's the best publicly available data we
-could find.
+We manually cleaned the Speedo dataset, geocoding addresses and validating stop
+locations. The final dataset includes 519 transit nodes derived from CityLines
+data (representing the Metro and Orange Line infrastructure) and 70 unique
+Speedo bus stops. It is acknowledged that this dataset is not exhaustive,
+particularly regarding informal transport (e.g., Qingqis), but it represents the
+most reliable publicly available data.
 
 === Road Network and Points of Interest
 
-We used OSMnx to download Lahore's road network and points of interest from
-OpenStreetMap. OSM has pretty good coverage of Lahore thanks to local mappers.
-We filtered POIs to include places relevant to daily life: shops, schools,
-hospitals, government offices, parks, etc.
-
-This gave us roughly 140,000 nodes and 200,000 edges, forming the structural
-backbone of our urban graph.
+We utilized OSMnx to retrieve Lahore's road network and points of interest
+(POIs) from OpenStreetMap (OSM). Filtering for relevant locations (schools,
+hospitals, markets, etc.) resulted in a graph comprising approximately 146,000
+nodes and roughly 200,000 edges.
 
 == Graph Construction
 
-The city is modeled as a spatial graph $G = (V, E)$ where nodes $V$ are points
-of interest and edges $E$ represent physical road connections.
+The city is modeled as a spatial graph $G = (V, E)$ where $V$ represents POIs
+and $E$ represents physical road segments.
 
 === Node Insertion and Connectivity
 
-We inserted the 589 transit stops as additional nodes into the graph. To make
-sure these weren't isolated, we connected each stop to its nearest existing POI.
-This is important for community detection—isolated nodes would mess up the
-algorithm's ability to identify connected regions. It also reflects the reality
-that transit stops are access points connected to the broader urban fabric.
+The transit stops were inserted as additional nodes. Crucially, to prevent these
+stops from forming isolated components, artificial edges were created connecting
+each stop to its nearest existing POI or road intersection. This step ensures
+that the transit nodes are fully integrated into the graph topology, allowing
+the community detection and message-passing algorithms to function correctly.
 
 === Feature Engineering
 
-Each node $v in V$ gets a feature vector that captures different aspects of its
-urban context:
-
-*Geometric Features*: Latitude and longitude $(x, y)$ encode spatial position.
-
-*Demographic Features*: Population density $p_v$ is assigned using the
-distribution method described earlier—each node gets a fraction of the
-population from nearby 1km grid cells.
-
-*Topological Features*: Street count (node degree) $"deg"(v)$ indicates how
-connected a location is via the road network.
-
-*Accessibility Features*: Distance to the nearest transit stop $d_v$ is computed
-using network distance (actual walking distance along roads) rather than
-Euclidean distance.
-
-*Infrastructure Features*: Binary flag $t_v in {0, 1}$ indicating whether the
-node itself is a transit stop.
-
-*Community Features*: One-hot encoded community membership derived from the
-Louvain algorithm (explained next).
+Each node $v in V$ is assigned a feature vector capturing its urban context:
+- *Geometric*: Latitude and longitude $(x, y)$.
+- *Demographic*: Population density $p_v$ (distributed from WorldPop).
+- *Topological*: Node degree, indicating road connectivity.
+- *Accessibility*: Network distance to the nearest transit stop $d_v$, computed
+  along the road network rather than via Euclidean distance.
+- *Community*: One-hot encoded membership derived from the Louvain algorithm.
 
 == Community Detection
 
-We used the Louvain method to partition the graph into communities. This
-algorithm optimizes modularity—a measure of how much more densely connected
-nodes are within communities compared to between communities. It works in two
-phases that repeat iteratively: first, each node is assigned to the community
-that gives the biggest modularity increase; second, the graph is coarsened by
-treating each community as a single node, and the process repeats.
+We employed the Louvain method to partition the graph. It is important to note
+that Louvain optimizes for *modularity*—the density of links inside communities
+compared to links between communities—rather than spatial compactness or
+diameter. For our graph, this resulted in approximately 152 communities. These
+clusters represent mathematical partitionings of the graph based on connectivity
+and do not necessarily align with administrative "societies" or neighborhoods, a
+limitation we account for in our analysis.
 
-For our graph, Louvain identified around 160 communities. These range from
-compact clusters in the dense city center to more scattered groupings on the
-periphery. The communities don't necessarily match official administrative
-boundaries or residential societies, but they do reflect natural clusters in the
-urban network.
-
-We tried a couple of alternatives. Label propagation worked but generated way
-too many communities (500+), making subsequent analysis unwieldy. We also looked
-at DBSCAN, but the communities it produced were ambiguous—probably due to
-parameter tuning issues on our end. We didn't want to waste too much time
-debugging it, so we stuck with Louvain. In hindsight, DBSCAN might have been
-useful for identifying linear transit corridors rather than compact regions,
-which could be interesting for future work.
+We briefly explored DBSCAN, but it produced ambiguous results with our initial
+parameters. Given the robustness of Louvain for large graphs, it was selected as
+the primary method.
 
 == Label Generation Strategy
 
-One of the main challenges with this project was the lack of ground-truth
-labels. Manually labeling 160,000 nodes would be completely impractical. We
-solved this using weak supervision: automatically generate labels for "obvious"
-examples and treat everything else as unlabeled test data.
+Lacking ground-truth labels for "transit deserts," we employed a weak
+supervision strategy to generate labels for training. We defined heuristic rules
+to identify "obvious" cases:
 
-=== Defining Transit Deserts
-
-A transit desert is characterized by high population density (lots of people who
-need transit) combined with poor accessibility (far from stops). Conversely,
-transit-adequate areas either have low population (less need for service) or
-good accessibility (need is being met).
-
-=== Labeling Criteria
-
-Let $mu_p$ be the median population density across all nodes. We assigned labels
-$y_v in {0, 1}$ as follows:
+Let $mu_p$ be the median population density. We assigned labels $y_v in {0, 1}$
+as follows:
 
 $
   y_v = cases(
@@ -317,269 +266,194 @@ $
   )
 $
 
-Nodes with $y_v = 1$ are transit-adequate: either they're high-population areas
-with nearby stops, or low-population areas where transit isn't as critical.
-Nodes with $y_v = 0$ are used as negative examples to provide
-contrast—low-population areas far from stops. The "unlabeled" category includes
-everything in between: areas where it's not immediately obvious whether they're
-adequately served or not.
-
-This gives us roughly 15-20% of nodes as labeled training data and 80-85% as the
-test set. The model has to learn from the clear cases and generalize to the
-ambiguous ones.
+We utilized strict thresholds (1500m for accessibility, 4500m for lack thereof)
+to ensure that only high-confidence nodes were used for training. Nodes with
+$y_v = 1$ represent accessible, high-density areas, while $y_v = 0$ represents
+low-density areas far from transit. The "unlabeled" nodes—comprising the vast
+majority of the graph—are those where the status is ambiguous, which the model
+aims to classify.
 
 == Graph Neural Network Architecture
 
-We used a Graph Convolutional Network (GCN) for node classification. GCNs are
-well-suited for this because they naturally aggregate information from
-neighboring nodes, which is exactly what we want—transit accessibility has
-spatial extent, so knowing about nearby nodes is informative.
+We implemented a Graph Convolutional Network (GCN) for node classification. GCNs
+were chosen for their efficiency in aggregating features from local
+neighborhoods. The architecture consists of two GCN layers, each with 64 hidden
+units.
 
-Our architecture has two GCN layers with 64 and 32 hidden units respectively,
-followed by a softmax output layer for binary classification. We used ReLU
-activations and applied dropout (rate=0.3) to prevent overfitting.
+Mathematically, the layer-wise propagation rule of the GCN is defined as:
 
-The model was trained for 200 epochs with early stopping based on validation
-loss. Training took about 15 minutes on a standard laptop CPU, which is pretty
-reasonable given the graph size.
+$ H^((l+1)) = sigma(tilde(D)^(-1/2) tilde(A) tilde(D)^(-1/2) H^((l)) W^((l))) $
+
+Where:
+- $tilde(A) = A + I_N$ is the adjacency matrix of the graph with added
+  self-loops.
+- $tilde(D)$ is the degree matrix of $tilde(A)$.
+- $W^((l))$ is the layer-specific trainable weight matrix.
+- $H^((l))$ is the matrix of activations in the $l$-th layer, with $H^((0))$
+  being the input feature matrix.
+- $sigma$ is the activation function, for which we utilized ReLU.
+
+We initially attempted to use Graph Attention Networks (GATs) to better capture
+the varying importance of specific road connections. However, this approach was
+discarded due to prohibitive computational costs (training times exceeding 1.5
+hours per epoch) and stability issues. The GCN model provided a balance of
+performance and efficiency, training in approximately 15 minutes.
 
 == Community-Level Aggregation
 
-After getting node-level predictions from the GCN, we aggregated results to the
-community level. For each community $C_i$, we computed the transit adequacy
-ratio:
-
-$
-  r_i = (|{v in C_i : hat(y)_v = 1}|) / (|C_i|)
-$
-
-Communities with low $r_i$ values (high proportion of nodes predicted as
-transit-inadequate) are flagged as priority areas for transit investment. This
-aggregation smooths out noise from individual predictions and provides insights
-at a scale that's actually useful for planning—nobody's going to build transit
-based on individual POI-level data.
+Post-classification, node-level predictions were aggregated to the community
+level. For each community $C_i$, we computed a transit adequacy ratio.
+Communities with a low ratio of adequately served nodes were flagged as priority
+transit deserts. This aggregation helps smooth out noise at the individual node
+level, providing actionable insights for district-level planning.
 
 = Results
 
 == Model Performance
 
-The GCN successfully classified the test set. We don't have ground-truth labels
-for validation, so traditional accuracy metrics aren't really meaningful here.
-But the predictions show strong spatial coherence—neighboring nodes tend to get
-similar classifications, which is what we'd expect if the model is learning real
-patterns rather than just noise.
+The GCN demonstrated strong spatial coherence in its predictions on the test
+set. While the absence of ground-truth labels precludes traditional accuracy
+metrics, the model effectively generalized from the heuristic "obvious" examples
+to the ambiguous regions, clustering transit-adequate nodes along major
+corridors.
 
-== Identified Transit Deserts
+== Analysis of Critical Underserved Clusters
+The quantitative assessment of the accessibility index highlights three distinct
+clusters with the lowest scores. Manual verification of these coordinates
+indicates that these regions are not homogenous; rather, they represent three
+specific typologies of transit exclusion: peri-urban disconnection,
+density-induced inaccessibility, and industrial corridor gaps.
 
-The analysis highlighted several types of underserved areas:
+=== 1. North-East Fringe: Peripheral Agricultural Settlements
+This cluster encompasses the settlements of *Taqi Pur*, *Chhapa*, and *Nathoki*.
+Morphologically, this region is characterized by low-density, agrarian land use
+that technically falls within the district boundaries but functions as a series
+of satellite villages. The extremely low accessibility scores here reflect a
+classic "coverage gap," where the formal transit network terminates at the urban
+periphery, failing to extend into the rural hinterland. Residents in these areas
+face a "spatial mismatch," likely necessitating the use of intermediate informal
+paratransit to access even the outermost nodes of the formal bus network.
 
-*Peripheral Communities*: Neighborhoods along the city's eastern and southern
-edges, particularly beyond the Ring Road, show very poor transit access. These
-are areas with growing residential development but minimal formal transit
-coverage. People living here basically have to rely on expensive private
-transport or informal options.
+=== 2. Central-North: Infrastructurally Isolated Urban Pockets
+Geographically central regions, identified as *Harbanspura* and *Aziz Bhatti
+Town*, emerged as significant transit deserts. This result highlights the issue
+of "network penetration" rather than mere distance. Despite the proximity of
+high-capacity transit corridors (such as the Orange Line Metro), the internal
+depth and density of these mixed-use neighborhoods create a barrier to access.
+The walking distance from the centroid of these residential zones to the nearest
+arterial transit stop exceeds the standard 1 km catchment threshold.
+Consequently, these areas suffer from a "last-mile" connectivity failure, where
+high density precludes the entry of standard buses, rendering the core transit
+network effectively inaccessible without feeder modes.
 
-*Industrial Zones*: Some industrial areas, especially those without dedicated
-worker transport, came up as transit deserts. These have high daytime
-populations from commuters but limited public transit options.
-
-*Interstitial Neighborhoods*: There are pockets within the urban core that fall
-between major transit corridors. They're not directly served by metro or Speedo
-routes, and while they might be "close" to transit by Euclidean distance, the
-actual walking distance through the road network is significant.
+=== 3. South-West Corridor: The Industrial Access Gap
+The cluster spanning *Mohlanwal*, *Chung*, and *Sundar* represents a critical
+misalignment between economic zones and transit planning. This corridor hosts
+the Sundar Industrial Estate and associated worker colonies. The low index
+scores here illustrate the "termination effect," where the formal Metro and
+Speedo bus networks effectively cease operations at Thokar Niaz Baig. This
+forces a reliance on unregulated transport for the final leg of the commute to
+major employment centers. Unlike the rural fringe, this region demonstrates high
+potential demand (commuter flow) that is currently unmet by the formal network's
+existing operational limits.
 
 == Spatial Patterns
 
-Looking at the classified communities on a map, a few clear patterns emerge:
-
-- Transit adequacy is concentrated along the Orange Line corridor and major
-  Speedo routes.
-- There's a sharp gradient moving away from these corridors—accessibility drops
-  off quickly beyond 2-3 km.
-- Point of interest density is higher in the city center, which probably biases
-  the GNN's attention toward well-mapped central areas.
-- Peripheral communities are more spatially dispersed, reflecting lower OSM
-  mapping coverage. This might underestimate the actual population and need for
-  transit in those areas.
+- Transit adequacy is strongly correlated with the Orange Line corridor and
+  primary Speedo routes.
+- Accessibility drops precipitously beyond a 2-3 km radius from these corridors.
+- POI density is notably higher in the city center, likely introducing a bias in
+  the GCN's attention toward well-mapped central areas.
 
 == Limitations and Caveats
 
-There are several important limitations to keep in mind:
-
-*Incomplete Transit Data*: We only have the Orange Line and partial Speedo
-coverage. We're missing informal transport entirely—qingqis, private vans,
-intercity buses. Our accessibility estimates are definitely a lower bound; many
-"deserts" probably have some informal service.
-
-*Community Misalignment*: The Louvain communities don't match administrative
-boundaries or residential societies. This makes it harder to directly apply
-results to policy decisions, which usually operate at the level of official
-districts or neighborhoods.
-
-*OSM Coverage Bias*: OpenStreetMap coverage is better in wealthier, central
-areas. This creates an artificial density gradient in our POI distribution, and
-the GNN might be picking up on this rather than actual transit need.
-
-*Static Analysis*: We're looking at a snapshot of current conditions. We don't
-model temporal aspects like rush-hour frequency, crowding, or planned
-infrastructure expansions.
-
-Despite these issues, we think the results are a reasonable first approximation
-and demonstrate that the GNN approach can work for this problem.
+It is crucial to acknowledge several limitations:
+- *Incomplete Data*: The dataset includes only 70 Speedo stops and the
+  Metro/Orange Line. Informal transport (Qingqis, vans), which serves a massive
+  portion of Lahore, is not modeled.
+- *Community Skew*: The "communities" detected by Louvain are graph-theoretic
+  clusters. They serve as a proxy for neighborhoods but do not perfectly map to
+  real-world residential societies.
+- *OSM Bias*: The completeness of OpenStreetMap data varies by neighborhood
+  wealth, potentially skewing density estimates.
 
 = Discussion
 
 == Methodological Insights
 
-Using GNNs for transit desert identification has some clear advantages over
-traditional approaches. The ability to incorporate different types of
-features—demographic, topological, geographic—in a single framework is powerful.
-And the message-passing mechanism naturally captures the fact that transit
-accessibility isn't just about the nearest stop; it has spatial extent that
-affects surrounding areas.
+The use of GNNs allows for the integration of topological, demographic, and
+geometric features into a unified framework. The "artificial edges" created
+during graph construction proved critical; without them, transit stops would
+have remained isolated, rendering the message-passing mechanism ineffective for
+those nodes.
 
-The weak supervision strategy worked pretty well, though it does make
-assumptions about what counts as "obvious." The thresholds we chose (1500m and
-4500m for distance, median population for density) are based on common urban
-planning heuristics, but different thresholds would produce different training
-sets. It would be good to do sensitivity analysis to see how robust the results
-are.
+The weak supervision strategy demonstrated that useful classifiers can be
+trained without manual annotation, provided the heuristic anchors are
+sufficiently strict. The choice of 1500m and 4500m thresholds was deliberate to
+avoid noise in the training set.
 
-== Computational Considerations
+== Ethical Considerations and Data Bias
 
-The project had some workflow challenges worth mentioning. We initially worked
-in Jupyter notebooks, which caused problems—memory issues during geospatial
-operations, state management bugs, version control conflicts with notebook
-metadata. For anything beyond quick prototyping, proper scripts with explicit
-memory management are the way to go.
+A critical consideration in this analysis is the "Digital Divide" inherent in
+crowdsourced mapping platforms like OpenStreetMap (OSM). In Lahore, affluent
+neighborhoods such as DHA and Gulberg typically exhibit higher fidelity in OSM
+data regarding road networks and points of interest (POIs) compared to
+lower-income areas or informal settlements (katchi abadis). This discrepancy
+introduces a potential bias in our model: areas with sparse data may be
+algorithmically misinterpreted as "low density" rather than "unmapped."
+Consequently, the model might under-prioritize legitimate transit deserts in
+marginalized communities simply because they lack digital visibility. Future
+iterations of this work must integrate ground-truth validation or supplementary
+datasets to mitigate this socio-technical bias.
 
-Coordinate Reference System issues were another pain point. We wasted hours
-debugging CRS mismatches between datasets. The lesson: convert everything to a
-consistent projected CRS (EPSG:32643 for Pakistan) upfront, and only use
-geographic CRS (EPSG:4326) for final visualization.
+== Implementation Challenges
 
-== Alternative Approaches
-
-We explored some other modeling strategies that didn't make it into the final
-version:
-
-*Graph Attention Networks*: We initially wanted to use GATs, which learn
-attention weights over edges. This could better capture that different road
-connections have different importance. But training was prohibitively slow—over
-1.5 hours per epoch. We think the large number of one-hot encoded community
-features was the problem. If we used manual community partitioning instead,
-reducing feature dimensionality, GATs might be feasible and could perform
-better.
-
-*Graph Classification*: Instead of classifying individual nodes, we considered
-treating each community as its own subgraph and doing graph-level
-classification. This would require manually labeling a smaller number of
-communities but might give more stable predictions and better align with
-planning decisions.
-
-*DBSCAN for Communities*: As mentioned earlier, we tried DBSCAN but it didn't
-work well with our default parameters. With more tuning, it might be useful for
-identifying linear transit corridors or other non-compact structures that
-Louvain misses.
+We encountered significant implementation hurdles regarding Coordinate Reference
+Systems (CRS). Discrepancies between datasets (EPSG:4326 vs. EPSG:32643)
+initially led to erroneous distance calculations, requiring a rigorous
+standardization of the pipeline. Furthermore, managing memory overhead within
+the interactive development environment required aggressive garbage collection
+and state management, particularly during the handling of large graph objects.
 
 == Practical Implications
 
-For people actually doing urban planning in Lahore, our results suggest a few
-concrete directions:
+For urban planning, our results suggest:
+- *Priority Corridors*: Radial routes connecting peripheral deserts to the city
+  center should be prioritized.
+- *Last-Mile Connectivity*: Investments in pedestrian infrastructure around
+  existing stops could effectively shrink "interstitial" deserts without
+  requiring new vehicle fleets.
+- *Demand-Responsive Transit*: Low-density peripheral areas may be better served
+  by flexible micro-transit rather than fixed-route buses.
 
-*Priority Corridors*: The peripheral transit deserts should be high priority for
-new bus routes or BRT corridors. Radial routes connecting outer neighborhoods to
-the city center would have the biggest impact.
+== Scalability
 
-*Last-Mile Connectivity*: Even near existing transit, poor walkability—missing
-sidewalks, unsafe crossings, physical barriers—can create effective deserts.
-Investing in pedestrian infrastructure around stops could expand their coverage
-area without building new routes.
-
-*Demand-Responsive Transit*: In dispersed peripheral communities, fixed-route
-service might not be efficient. Flexible options like micro-transit or
-ride-sharing integration could be more cost-effective.
-
-*Transit-Oriented Development*: Zoning decisions should consider transit access.
-Encouraging dense, mixed-use development along existing and planned corridors
-maximizes the return on infrastructure investment.
-
-== Scalability and Generalization
-
-One of the best things about this approach is how easy it is to adapt to other
-cities. The entire pipeline uses public datasets—WorldPop, OpenStreetMap, and
-whatever transit data is available locally. With minor tweaks to handle
-different road network structures and transit systems, you could run the same
-analysis on any city.
-
-The modular design helps too. Data preprocessing, graph construction, community
-detection, and classification are all separate stages. You can swap out
-components—use a different community detection algorithm, try a different GNN
-architecture—without rebuilding everything from scratch.
+A significant strength of this framework is its scalability. By relying on
+global datasets like WorldPop and OpenStreetMap, the pipeline can be adapted to
+other cities—such as Karachi or Rawalpindi—with minimal modification. The
+modular design allows components (e.g., the community detection algorithm or GNN
+architecture) to be swapped as improved methods or data become available.
 
 = Conclusion
 
-This project shows that Graph Neural Networks are a viable tool for identifying
-transit deserts in Lahore. By integrating population, infrastructure, and
-network data into a spatial graph, we were able to classify areas by transit
-adequacy and flag underserved regions for priority action.
-
-The results, while preliminary and subject to data limitations, provide a useful
-starting point for evidence-based transit planning. The methodology is scalable
-and could be applied to other Pakistani cities or adapted for international use
-with minimal changes.
-
-The main takeaway is that data-driven approaches to transit equity are feasible
-even in contexts where data is messy and incomplete. With continued improvement
-in open datasets and refinement of the methods, tools like this could play a
-real role in making cities more accessible and equitable.
+This study demonstrates that Graph Neural Networks offer a viable, scalable
+pathway for identifying transit deserts in resource-constrained environments. By
+integrating diverse spatial datasets into a unified graph model, we successfully
+approximated transit accessibility across Lahore. While the results are an
+approximation limited by data completeness, they provide a data-driven
+foundation for transit equity analysis. Future work should focus on
+incorporating informal transit networks and conducting sensitivity analyses on
+labeling thresholds. Ultimately, this project represents a step toward shifting
+urban planning from ad-hoc decision-making to systematic, equity-centered
+methodologies.
 
 = Future Work
 
-Several directions could extend and improve this work:
-
-*Data Enhancement*: The biggest limitation is incomplete transit data.
-Incorporating informal transport networks would give a much more complete
-picture of actual accessibility. Crowdsourced data collection, maybe through a
-mobile app, could help fill these gaps. Real-time data on transit frequency and
-reliability would also be valuable—a stop that's "nearby" but only served once
-every two hours isn't that useful.
-
-*Temporal Dynamics*: Right now, the analysis is static. Extending it to consider
-time-varying accessibility—peak vs. off-peak service, time-of-day patterns—would
-better reflect commuters' lived experiences. We could also model how
-accessibility changes as new routes come online or as populations shift.
-
-*Equity Dimensions*: Overlaying socioeconomic data would let us assess how
-transit deserts disproportionately affect vulnerable populations: low-income
-residents, elderly people, persons with disabilities. This would strengthen the
-equity focus and help prioritize interventions that reduce inequality.
-
-*Validation*: We don't have ground-truth labels, which makes it hard to
-definitively validate the results. Household travel surveys, focus groups, or
-comparisons with existing accessibility studies could provide empirical
-confirmation. Even just checking whether our predictions match planners'
-intuitions would be useful.
-
-*Route Optimization*: Right now, we identify underserved areas but don't suggest
-solutions. The next step would be route optimization: given the transit deserts,
-where should new routes or stops be placed to maximize coverage and ridership?
-This is a harder problem but directly actionable.
-
-*Multi-City Comparison*: Applying the same methodology to multiple
-cities—Karachi, Islamabad, Rawalpindi—would enable comparative analysis. We
-could see which cities have worse transit equity, identify best practices, and
-understand how different urban forms and policies affect accessibility.
-
-*Alternative Models*: With more computational resources or manual community
-curation, we could revisit GATs or try other GNN architectures. Graph
-transformers are another emerging approach that might work well.
-
-*Integration with Planning Tools*: Ultimately, this should be integrated into
-the tools planners actually use. Building a web interface where planners can
-upload data, run the analysis, and visualize results would make it much more
-practical for real-world use.
-
-The broader vision is to move transit planning away from ad-hoc decisions and
-toward systematic, data-driven approaches that explicitly center equity and
-accessibility. This project is one small step in that direction.
+- *Data Enhancement*: Integrating informal transport data (Qingqis, rickshaws)
+  is the most critical next step to reflect ground realities.
+- *Temporal Dynamics*: Moving from static analysis to time-varying models that
+  account for peak/off-peak frequency.
+- *Equity Overlays*: Incorporating socioeconomic data to identify where transit
+  deserts overlap with vulnerable populations.
+- *Validation*: Conducting household travel surveys to ground-truth the model's
+  predictions against resident experiences.

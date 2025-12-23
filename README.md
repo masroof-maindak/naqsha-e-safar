@@ -3,6 +3,11 @@
 **Identifying and Classifying Public Transit Deserts in Lahore Using Graph
 Neural Networks**
 
+<p align="center">
+  <img alt="Served-ness ratio heatmap" src=".github/assets/heatmap.png" width="49%">
+  <img alt="Bottom three communitites" src=".github/assets/bottom-three-communities.png" width="49%">
+</p>
+
 ## Problem Statement
 
 This project identifies areas in Lahore with high population density but poor
@@ -11,6 +16,8 @@ access to public transport i.e “transit deserts.” Using population data
 (OpenStreetMap), we model Lahore as a spatial graph and apply a Graph Neural
 Network to classify underserved regions. The outcome is a data-driven map of
 transit accessibility gaps to guide future transport planning.
+
+The full details can be found in the [paper](paper/main.pdf).
 
 ## Setup
 
@@ -112,8 +119,8 @@ and more importantly: time constraints._
        Interest
 2. [x] Add community label (using Louvain) via one-hot encoding as a node
        feature
-3. [x] Generate binary labels based on `distance_to_nearest_stop < 600` &
-       `distance_to_nearest_stop > 3500`; these denote cases where we are
+3. [x] Generate binary labels based on `distance_to_nearest_stop < 1500` &
+       `distance_to_nearest_stop > 4500`; these denote cases where we are
        definitely not-inside and inside a transit desert, respectively; every
        other node is used for testing
 4. [x] Train a GNN on the graph + labels
